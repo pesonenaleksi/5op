@@ -1,0 +1,57 @@
+import math
+
+##def muunna_xy_koordinaateiksi(mitattu_kulma, mitattu_vektorin_pituus):
+    #x = math.cos(mitattu_kulma) * mitattu_vektorin_pituus
+  ##  y = math.sin(mitattu_kulma) * mitattu_vektorin_pituus
+    #return x, y
+
+hahmo_1 = {
+    "x": 0,
+    "y": 0,
+    "suunta": 0,
+    "nopeus": 0
+}
+
+hahmo_2 = {
+    "x": 50,
+    "y": 50,
+    "suunta": 0,
+    "nopeus": 0
+}
+
+def kysy_liike(hahmo_1):
+    print("Hahmo on sijainnissa ({x}, {y})".format(**hahmo_1))
+    hahmo_1["suunta"] = int(input("Anna liikkumissuunta asteina "))
+    hahmo_1["nopeus"] = int(input("Annan liikkumisnopeus: "))
+
+def paivita_sijainti(hahmo_1):
+    hahmo_1['suunta'] = math.radians(hahmo_1["suunta"])
+    (x2, y2) = (round(hahmo_1['x'] + hahmo_1['nopeus'] * math.cos(hahmo_1['suunta'])), round(hahmo_1['y'] + hahmo_1['nopeus'] * math.sin(hahmo_1['suunta'])))
+    hahmo_1.update(x = x2)
+    hahmo_1.update(y = y2)
+    print("Uusi sijainti: ({}, {})".format(x2, y2))
+    return x2, y2
+
+def kysy_liike(hahmo_2):
+    print("Hahmo on sijainnissa ({x}, {y})".format(**hahmo_2))
+    hahmo_2["suunta"] = int(input("Anna liikkumissuunta asteina "))
+    hahmo_2["nopeus"] = int(input("Annan liikkumisnopeus: "))
+
+def paivita_sijainti(hahmo_2):
+    ##hahmo_2['suunta'] = math.radians(hahmo_2["suunta"])
+    (x2, y2) = (round(hahmo_2['x'] + hahmo_1['nopeus'] * math.cos(math.radians(hahmo_2['suunta']))), round(hahmo_2['y'] + hahmo_2['nopeus'] * math.sin(math.radians(hahmo_2['suunta']))))
+    hahmo_2.update(x = x2)
+    hahmo_2.update(y = y2)
+    print("Uusi sijainti: ({}, {})".format(x2, y2))
+    return x2, y2
+
+
+print("Pelaajan 1 vuoro")
+kysy_liike(hahmo_1)
+paivita_sijainti(hahmo_1)
+##print(hahmo_1) ##Tämä todistaa, että dict on muuttunut
+print("Pelaajan 2 vuoro")
+kysy_liike(hahmo_2)
+paivita_sijainti(hahmo_2)
+
+
